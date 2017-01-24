@@ -1,0 +1,19 @@
+body {
+	font-size: 15pt;
+	min-width: 200px;
+	max-width: 100%;
+}
+
+ul {
+	padding: 10vmax;
+	list-style: none;
+}
+
+li, td {
+	padding: 2vmax;
+}
+
+.back:hover, #options li:hover {
+	background-color: lightgray;
+	cursor: pointer;
+}
