@@ -1,9 +1,12 @@
 var colors = ["#A0C000", "#80C0C0", "#C0C0C0", "#E08000", "#CC6699", "#B18DC9", "#D8B534"];
 var prevColor;
+var NUM_COLORS = 7;
+
 window.onload = function() {
+	loadColors();
 	updateColors();
 	updateSelectedColor();
-	setInterval(waitForNewColors, 1000);
+	setInterval(waitForNewColors, 5000);
 };
 
 function updateSelectedColor() {
@@ -33,4 +36,12 @@ function waitForNewColors() {
 		colors.push(prevColor);
 		updateColors();
 	}
+}
+
+// loads saved color settings
+function loadColors() {
+	chrome.storage.sync.get('colors', (item) => {
+		colors = item['colors'];
+		updateColors();
+	});
 }
