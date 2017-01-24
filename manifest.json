@@ -1,0 +1,13 @@
+{
+	"manifest_version": 2,
+	"name": "Change Grade-It Colors",
+	"version": "0.1",
+	"content_scripts": [
+	  	{
+		    "matches": [
+		      	"https://gradeit.cs.washington.edu/uwcse/admin/multipane_view.php?*"
+		    ],
+		    "js": ["content.js", "jquery-3.1.1.js"]
+	  	}
+	]
+}
