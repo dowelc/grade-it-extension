@@ -3,11 +3,25 @@ var prevColor;
 var NUM_COLORS = 7;
 
 window.onload = function() {
+	console.log("loading user colors");
 	loadColors();
 	updateColors();
 	updateSelectedColor();
 	setInterval(waitForNewColors, 5000);
+
+	// load "tabs.js"
+	loadTabsScript();
+
+	var frame = document.querySelector("#annotateframe");
+	frame.onload = annotateFrameLoad;
 };
+
+// stuff that should happen when annotateframe resets (from any file,
+// can only set one onload)
+function annotateFrameLoad() {
+	makeTabs();
+	updateColors();
+}
 
 function updateSelectedColor() {
 	var frame = document.querySelector("#annotateframe");
