@@ -9,9 +9,13 @@ window.onload = () => {
 
 function loadColors() {
 	chrome.storage.sync.get('colors', (item) => { 
-		colors = item['colors'];
-		addColorOptions();
-		saveColors();
+		if (item == null) {
+			saveColors();
+		} else {
+			colors = item['colors'];
+			addColorOptions();
+			saveColors();		
+		}
 	});
 }
 
