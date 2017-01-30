@@ -33,7 +33,7 @@ function makeTabs() {
 	var allTabs = document.createElement("ul");
 	allTabs.style.listStyle = "none";
 	allTabs.style.textAlign = "left";
-	allTabs.style.borderBottom = "solid black 1px";
+	// allTabs.style.borderBottom = "solid black 1px";
 	allTabs.style.padding = "0 0 2px 0";
 	allTabs.style.position = "fixed";
 	allTabs.style.margin = "0";
@@ -43,8 +43,10 @@ function makeTabs() {
 		var tab = document.createElement("li");
 		tab.classList.add("tab");
 		tab.style.display = "inline";
-		tab.style.border = "2px solid black";
-		tab.style.backgroundColor = "white";
+		tab.style.border = "2px solid lightgray";
+		tab.style.borderRadius = "5px";
+		tab.style.backgroundColor = "lightgray";
+		tab.style.margin = "2px";
 		tab.onclick = makeTabs;
 
 		var tabLink = document.createElement("a");
@@ -74,5 +76,6 @@ function makeTabs() {
 	}
 	var tabSection = frameBody.querySelectorAll("h1")[0];
 	tabSection.innerHTML = "";
-	tabSection.appendChild(allTabs);		
+	tabSection.appendChild(allTabs);
+	tabSection.style.fontSize = "12pt";		
 }
