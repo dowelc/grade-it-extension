@@ -2,20 +2,26 @@ var NUM_COLORS = 7;
 var colors = ["#A0C000", "#80C0C0", "#C0C0C0", "#E08000", "#CC6699", "#B18DC9", "#D8B534"];
 
 window.onload = () => {
-	loadColors();
+	checkLoaded();
 	// document.querySelector("#color").onclick = openColorMenu;
 	// document.querySelector(".back").onclick = goBack;
 };
 
+function checkLoaded() {
+	chrome.storage.sync.get('colors', (item) => { 
+		if (!item['colors']) {
+			chrome.storage.sync.set({'colors': colors}, () => { loadColors(); }); 
+		} else {
+			loadColors();
+		}
+	});
+}
+
 function loadColors() {
 	chrome.storage.sync.get('colors', (item) => { 
-		if (item == null) {
-			saveColors();
-		} else {
-			colors = item['colors'];
-			addColorOptions();
-			saveColors();		
-		}
+		colors = item['colors'];
+		addColorOptions();
+		saveColors();
 	});
 }
 
@@ -35,6 +41,7 @@ function addColorOptions() {
 		
 		var option = document.createElement("input");
 		option.setAttribute("type", "color");
+		console.log("colors: " + colors);
 		option.value = colors[i];
 		option.onchange = saveColors;
 
