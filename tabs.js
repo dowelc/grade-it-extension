@@ -38,7 +38,6 @@ function makeTabs() {
 	allTabs.style.position = "fixed";
 	allTabs.style.margin = "0";
 	allTabs.style.zIndex = "100";
-	allTabs.style.width = "100%";
 	for (var i = 0; i < allLinks.length; i++) {
 		var tab = document.createElement("li");
 		tab.classList.add("tab");
