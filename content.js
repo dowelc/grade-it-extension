@@ -49,6 +49,9 @@ function updateColors() {
 		} else {
 			var clonedButton = inputs[0].cloneNode(true);
 			clonedButton.style.backgroundColor = colors[i];
+			clonedButton.id = "";
+			clonedButton.children[0].id = "";
+			clonedButton.onclick = setTempColor;
 			colorsContainer.appendChild(clonedButton);
 			newColorCount++;
 			if (newColorCount % 4 == 1) {
@@ -65,6 +68,17 @@ function updateColors() {
 	frameBody.querySelector("#highlight").click();
 	inputs[0].click();
 	frameBody.querySelector("#select").click();
+}
+
+function setTempColor() {
+	var frame = document.querySelector("#annotateframe");
+	var frameBody = frame.contentDocument || frame.contentWindow.document;
+	var inputs = frameBody.querySelectorAll("#highlightcolors label");
+	var oldColor = inputs[0].style.backgroundColor;
+	inputs[0].style.backgroundColor = this.style.backgroundColor;
+	inputs[0].click();
+	inputs[0].style.backgroundColor = oldColor;
+	this.children[0].checked = true;
 }
 
 function waitForNewColors() {
