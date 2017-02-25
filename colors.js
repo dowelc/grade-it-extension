@@ -34,10 +34,12 @@ function checkLoaded() {
 function loadColors() {
 	chrome.storage.sync.get('colors', (item) => { 
 		colors = item['colors'];
-		numColors = colors.length;
-		document.querySelector("#numColors").value = numColors;
-		addColorOptions();
-		saveColors();
+		chrome.storage.sync.get('numColors', (item) => {
+			numColors = item['numColors'];
+			document.querySelector("#numColors").value = numColors;
+			addColorOptions();
+			saveColors();			
+		});
 	});
 }
 
