@@ -56,8 +56,15 @@ function updateColors() {
 			}
 		}
 	}
+	inputs[0].children[0].checked = true;
+
 	colorsContainer.appendChild(space);
 	colorsContainer.appendChild(colorPicker);
+
+	// simulate click so correct color is used initially
+	frameBody.querySelector("#highlight").click();
+	inputs[0].click();
+	frameBody.querySelector("#select").click();
 }
 
 function waitForNewColors() {
